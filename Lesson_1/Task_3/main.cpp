@@ -14,8 +14,8 @@ int main()
         cout << "You should work harder!";
     }
 
-    if (amount > 1000) {
-        if (amount > 1000000) {
+    if (amount > 999) {
+        if (amount > 999999) {
             cout << "You are a millionaire!";
         }
 
