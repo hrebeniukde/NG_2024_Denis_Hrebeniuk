@@ -43,11 +43,7 @@ int main()
 
         cout << "Discriminant = ";
         printComplexDoubleNumber(discriminant);
-    } else if (numberA && !numberB && !numberC) {
-        firstRoot = 0;
-        secondRoot = 0;
     } else if (numberA && numberB && !numberC) {
-        firstRoot = 0;
         secondRoot = -(numberB / numberA);
     } else if (numberA && !numberB && numberC) {
         double root = -(numberC / numberA);
