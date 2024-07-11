@@ -11,7 +11,7 @@ int main()
         numbers[index] = 0;
     }
 
-    int maxColumnLength;
+    int maxColumnLength = 0;
     for (int index = 0; index < MAX_NUMBERS_COUNT; index++) {
         cout << "Please, enter value: ";
         cin >> numbers[index];
@@ -21,9 +21,9 @@ int main()
     }
 
     cout << endl;
-    for (int row = 1; row <= maxColumnLength; row++) {
+    for (int row = 0; row <= maxColumnLength; row++) {
         for (int symbol = 0; symbol < MAX_NUMBERS_COUNT; symbol++) {
-            if (row <= numbers[symbol]) {
+            if (row < numbers[symbol]) {
                 cout << "*";
             } else {
                 cout << " ";
