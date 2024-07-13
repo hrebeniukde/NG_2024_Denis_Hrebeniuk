@@ -13,27 +13,27 @@ int main()
     int rowLength = (size * 2) - 1;
 
     cout << endl;
-    for (int row = 1; row <= size + 1; row++) {
-        bool breakLoop;
-        if (row == size + 1) {
-            row = 1;
-            breakLoop = true; // last row, so just exit from loop
-        }
-
+    for (int row = 1; row <= size; row++) {
         int amountToSkip = size - row;
         for (int symbol = 1; symbol <= rowLength; symbol++) {
-            if (symbol > amountToSkip && symbol <= rowLength - amountToSkip) {
+            if (symbol > amountToSkip && symbol <= rowLength - amountToSkip)
                 cout << "*";
-            } else {
+            else
                 cout << " ";
-            }
         }
 
         cout << endl;
-
-        if (breakLoop)
-            break;
     }
+
+    // print last row with one * in the center of tree
+    for (int symbol = 1; symbol <= size; symbol++) {
+        if (symbol != size)
+            cout << " ";
+        else
+            cout << "*";
+    }
+
+    cout << endl;
 
     return 0;
 }

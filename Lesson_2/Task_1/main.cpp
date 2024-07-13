@@ -12,7 +12,7 @@ int main()
         bankData[account] = 0;
     }
 
-    char restart;
+    char restart = '\0';
     do {
         system("cls");
         cout << "Please, enter account number: ";
@@ -41,11 +41,11 @@ int main()
 
         system("cls");
         switch (action) {
-        case 1:
+        case 1: // amount of money
             cout << "The amount of money in the account: " << bankData[accountNumber] << endl;
             break;
-        case 2:
-        case 3:
+        case 2: // fall into case 3
+        case 3: // put/withdraw money
             int amount;
             cout << "Enter amount of money: ";
             cin >> amount;
@@ -63,7 +63,7 @@ int main()
             }
 
             break;
-        case 4: {
+        case 4: { // amount of money in all accounts
             int sum = 0;
             for (int account = 0; account < MAX_ACCOUNTS_COUNT; account++)
                 sum += bankData[account];
@@ -71,7 +71,7 @@ int main()
             cout << "Total amount in all accounts: " << sum << endl;
             break;
         }
-        case 5: {
+        case 5: { // max amount among all acounts
             int maxAmountAccount = 0;
             for (int account = 0; account < MAX_ACCOUNTS_COUNT; account++) {
                 if (bankData[account] > bankData[maxAmountAccount])
@@ -81,7 +81,7 @@ int main()
             cout << "Account with maximum amount of money (" << bankData[maxAmountAccount] << ") is No" << maxAmountAccount + 1 << endl;
             break;
         }
-        case 6: {
+        case 6: { // min amount among all acounts
             int minAmountAccount = 0;
             for (int account = 0; account < MAX_ACCOUNTS_COUNT; account++) {
                 if (bankData[account] < bankData[minAmountAccount])
@@ -91,7 +91,7 @@ int main()
             cout << "Account with minimum amount of money (" << bankData[minAmountAccount] << ") is No" << minAmountAccount + 1 << endl;
             break;
         }
-        case 7:
+        case 7: // exit from application
             exit(0);
         default:
             cout << "You chose the wrong action." << endl;
