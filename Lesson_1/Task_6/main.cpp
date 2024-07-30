@@ -9,31 +9,26 @@ int main()
     int size;
     cout << "Please, enter a size: ";
     cin >> size;
+    cout << endl;
 
     int rowLength = (size * 2) - 1;
 
-    cout << endl;
     for (int row = 1; row <= size; row++) {
         int amountToSkip = size - row;
-        for (int symbol = 1; symbol <= rowLength; symbol++) {
-            if (symbol > amountToSkip && symbol <= rowLength - amountToSkip)
-                cout << "*";
-            else
-                cout << " ";
-        }
+        for (int symbol = 0; symbol < amountToSkip; symbol++)
+            cout << " ";
+
+        int amountToPrint = rowLength - amountToSkip;
+        for (int symbol = amountToSkip; symbol < amountToPrint; symbol++)
+            cout << "*";
 
         cout << endl;
     }
 
     // print last row with one * in the center of tree
-    for (int symbol = 1; symbol <= size; symbol++) {
-        if (symbol != size)
-            cout << " ";
-        else
-            cout << "*";
-    }
-
-    cout << endl;
+    for (int symbol = 1; symbol < size; symbol++)
+        cout << " ";
+    cout << "*" << endl;
 
     return 0;
 }
