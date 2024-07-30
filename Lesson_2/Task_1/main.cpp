@@ -1,5 +1,5 @@
-#include <iostream>
 #include <conio.h>
+#include <iostream>
 
 using namespace std;
 
@@ -7,10 +7,8 @@ using namespace std;
 
 int main()
 {
-    int bankData[MAX_ACCOUNTS_COUNT], accountNumber;
-    for (int account = 0; account < MAX_ACCOUNTS_COUNT; account++) {
-        bankData[account] = 0;
-    }
+    int bankData[MAX_ACCOUNTS_COUNT] = {0}; // init with zeros values
+    int accountNumber = 0;
 
     char restart = '\0';
     do {
@@ -51,9 +49,19 @@ int main()
             cin >> amount;
             cout << endl;
 
-            if (action == 2)
+            if (action == 2) {
+                if (amount <= 0) {
+                    cout << "Deposit amount must be greater than 0!" << endl;
+                    break;
+                }
+
                 bankData[accountNumber] += amount; // put money
-            else {
+            } else {
+                if (amount <= 0) {
+                    cout << "Withdraw amount must be greater than 0!" << endl;
+                    break;
+                }
+
                 if (bankData[accountNumber] < amount) {
                     cout << "Not enough money in the account." << endl;
                     break;
@@ -78,7 +86,8 @@ int main()
                     maxAmountAccount = account;
             }
 
-            cout << "Account with maximum amount of money (" << bankData[maxAmountAccount] << ") is No" << maxAmountAccount + 1 << endl;
+            cout << "Account with maximum amount of money (" << bankData[maxAmountAccount]
+                 << ") is No" << maxAmountAccount + 1 << endl;
             break;
         }
         case 6: { // min amount among all acounts
@@ -88,7 +97,8 @@ int main()
                     minAmountAccount = account;
             }
 
-            cout << "Account with minimum amount of money (" << bankData[minAmountAccount] << ") is No" << minAmountAccount + 1 << endl;
+            cout << "Account with minimum amount of money (" << bankData[minAmountAccount]
+                 << ") is No" << minAmountAccount + 1 << endl;
             break;
         }
         case 7: // exit from application
