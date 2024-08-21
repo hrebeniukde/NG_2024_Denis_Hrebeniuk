@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+
 #include <map>
+#include <QDateTime>
 
 #include "card.h"
 
@@ -30,7 +32,7 @@ private slots:
 
     void on_confirmButton_clicked();
 
-    void on_recordsTable_cellChanged(int row, int column);
+    void on_recordsTable_cellChanged(int row);
 
     void on_searchButton_clicked();
 
