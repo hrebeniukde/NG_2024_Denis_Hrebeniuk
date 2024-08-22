@@ -13,7 +13,7 @@ Server::~Server()
     for (int clientIndex = 0; clientIndex < clients.size(); clientIndex++) {
         auto &client = clients[clientIndex];
 
-        DEBUG << "Closing the connection to " << client.tcpSocket->localAddress().toString() << "...";
+        DEBUG << "Closing the connection to " << client.tcpSocket->peerAddress().toString() << "...";
         client.tcpSocket->close();
 
         delete client.tcpSocket;
@@ -42,7 +42,7 @@ void Server::start(QString host, int port)
 void Server::newClientConnection()
 {
     QTcpSocket *tcpSocket = tcpServer->nextPendingConnection();
-    DEBUG << "New connection: " << tcpSocket->localAddress().toString() << ":" << tcpSocket->localPort() << "...";
+    DEBUG << "New connection: " << tcpSocket->peerAddress().toString() << ":" << tcpSocket->peerPort() << "...";
 
     connect (tcpSocket, &QTcpSocket::disconnected, this, &Server::clientDisconnected);
     connect (tcpSocket, &QTcpSocket::readyRead, this, &Server::incomingDataFromClient);
@@ -66,7 +66,7 @@ void Server::clientDisconnected()
         if (client.tcpSocket != tcpSocket)
             continue;
 
-        DEBUG << "Client " << client.tcpSocket->localAddress().toString() << ":" << tcpSocket->localPort() << " has been disconnected!";
+        DEBUG << "Client " << client.tcpSocket->peerAddress().toString() << ":" << tcpSocket->peerPort() << " has been disconnected!";
 
         delete client.tcpSocket;
         delete client.incomeDataStream;
@@ -101,6 +101,6 @@ void Server::incomingDataFromClient()
         file.write(fileData);
         file.close();
 
-        DEBUG << "Client " << client.tcpSocket->localAddress().toString() << ":" << tcpSocket->localPort() << " has sent " << fileName << "...";
+        DEBUG << "Client " << client.tcpSocket->peerAddress().toString() << ":" << tcpSocket->peerPort() << " has sent " << fileName << "...";
     }
 }
