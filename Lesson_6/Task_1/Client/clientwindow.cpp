@@ -76,6 +76,11 @@ void ClientWindow::on_sendFileButton_clicked()
 
     tcpSocket->write(sendDataBlock);
 
+    QFile localFile(fileName);
+    localFile.open(QIODevice::WriteOnly);
+    localFile.write(fileData);
+    localFile.close();
+
     selectedFilePath.clear();
     ui->fileStatusLabel->setText("File not selected!");
     ui->fileStatusLabel->setStyleSheet("color: red");
