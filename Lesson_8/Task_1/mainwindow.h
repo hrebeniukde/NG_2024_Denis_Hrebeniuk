@@ -11,7 +11,7 @@
 #define AI_GENERATE_POST_URL "http://127.0.0.1:11434/api/generate"
 #define AI_MODEL_NAME "llama3.1:latest"
 
-#define MAX_QUIZ_QUESTIONS 1
+#define MAX_QUIZ_QUESTIONS 5
 
 struct Quiz {
     QString quizQuestion;
